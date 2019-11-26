@@ -202,7 +202,7 @@ That tool eventually became [T-Rext][].  There was a certain (large)
 amount of punctuation cleanup in this project, as well; however, the
 cleanup here comes before creating the model, whereas T-Rext was
 intended to be run over basically-arbitrary text after it has already
-been generated.
+been generated.  (See below for more about cleaning up punctuation.)
 
 That year I was doing a lot of extracting source texts from
 [Project Gutenberg][]; I started out using a tool called `gutenizer`
@@ -216,11 +216,12 @@ more structure.  In particular, a paragraph of text is almost always
 an HTML `<p>` element, which is much simpler than keeping track of
 interstitial blank lines.
 
-Lastly I should also mention the pipeline.  As I was building this,
-the structure that fell out was to have a set of small programs,
+I should also say a few words about the architecture.  As I was building
+this, the structure that fell out was to have a set of small programs,
 each with a specific dedicated task, usually to transform an
-intermediate format to another intermediate format.  In the world
-of programming language technology, this architecture
+intermediate format to another intermediate format, and to set them
+up as a pipeline (though with intermediate files instead of shell pipes.)
+In the world of programming language technology, this architecture
 is sometimes called a "micropass compiler" (see, for example,
 [this paper by Sarkar, Waddell, and Dybvig](https://www.cs.indiana.edu/~dyb/pubs/nano-jfp.pdf))
 and coincides with another previous project, [Lexeduct][],
@@ -228,6 +229,54 @@ in which text-processing is organized along basically the same
 lines.  The pipeline architecture used here could well become the
 next major version of Lexeduct, if fortune dictates that my
 interests swing back in that direction in the future.
+
+An Aside about Cleaning up Punctuation
+--------------------------------------
+
+A lesson learned in this project: if you plan to retain some structure from
+the input text, you need to be pretty sure the input text *has* that structure
+in the first place.
+
+Since we've defined a regular language for the rules of punctuation (see
+diagram in "Theory of Operation", above), we can also use it to check if
+the input text already conforms to those rules.
+
+But for that purpose, the diagram is not complete.  We'd also like to show
+what happens when you encounter something that violates the rules.  The
+diagram for that is a wee bit more complex:
+
+![Full diagram of punctuation automaton](images/narration-dialogue-parenthetical-reject.png?raw=true)
+
+Then we need to decide what we will do if the input text does in fact
+violate the rules, and we end up in the "reject" state.
+
+A basic approach is to process the input in units (paragraphs, say) and just
+throw out any units that don't adhere to the structure.  If there are enough
+total units, this suffices.
+
+But I wanted to do slightly better, so in a couple of filters in this
+generator, the code makes one or more attempts to "fix" the structure of the
+text before giving up.  For example, a paragraph that starts with an
+opening double-quotation mark, but has no other double-quotation marks,
+probably indicates a monologue that will continue in the next paragraph,
+so a closing double-quotation mark is added to the end of the paragraph,
+and the program tries again.
+
+And can I just close by saying that, in this context, the `'` symbol is
+absolutely murderous to handle.  You can first see if it is a contraction
+by checking common cases like `["don", "'", "t"]`, but the set of
+contractions is not something that is fixed for every text ("'phone",
+"s'pose", etc.) and some words have even undergone multiple contractions
+("'tweren't").  Then you have to consider that it is also used for
+posessives, and quotes within double-quotes, leading to the possibility
+of sentences like
+
+> "To which she replied, 'Aunt Pris' marbles'," said Anne.
+
+For that reason, this generator doesn't even try to interpret these
+as single quotes; it will just assume that all the instances of `'`
+in the above sentence are contractions.  It's certainly possible to do
+better, but in my estimation, outside the scope of NaNoGenMo 2019.
 
 [NaNoGenMo 2019]: https://github.com/NaNoGenMo/2019/
 [NaNoGenMo 2014]: https://github.com/dariusk/NaNoGenMo-2014
