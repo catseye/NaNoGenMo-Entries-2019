@@ -1,5 +1,8 @@
+🙚 The Insidiously Rainbow-Wigged Dr. Fu-Manchu 🙘
+================================================
+
 _The moment I opened the dust-covered tome I could feel the noxious
-waves of Orientalism emanating from it.  Whither the antidote?
+waves of Orientalism oozing out from it.  Whither the antidote?
 I racked my brains for anything that might prove effective, but
 precious time was slipping by!  I had to pick something, and fast.
 There was no more that I could do but to try it and hope..._

@@ -16,7 +16,13 @@ for [NaNoGenMo 2019][].
 
 » The generated [Novel](Anne%20of%20Green%20Garbles/generated/Anne%20of%20Green%20Garbles.md)  
 » The [Code](Anne%20of%20Green%20Garbles/) that generated it  
-» The [Write-Up](Anne%20of%20Green%20Garbles/README.md) about the generator
+» The [Write-Up](Anne%20of%20Green%20Garbles/README.md) about the generator  
+» The [Issue](https://github.com/NaNoGenMo/2019/issues/118) submitting it to NaNoGenMo 2019
+
+### The Insidiously Rainbow-Wigged Dr. Fu-Manchu
+
+» The generated [Novel](The%20Insidiously%20Rainbow-Wigged%20Dr.%20Fu-Manchu/generated/The%20Insidiously%20Rainbow-Wigged%20Dr.%20Fu-Manchu.md)  
+» The [Code](The%20Insidiously%20Rainbow-Wigged%20Dr.%20Fu-Manchu/) that generated it
 
 [Cat's Eye Technologies]: http://catseye.tc/
 [NaNoGenMo 2019]: https://github.com/NaNoGenMo/2019/
