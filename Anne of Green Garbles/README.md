@@ -1,5 +1,5 @@
-~Anne of Green Garbles~
-=======================
+🙚 Anne of Green Garbles 🙘
+==========================
 
 Herein can be found the above-named generated novel, along with the
 code for generating it, the both of which were produced for [NaNoGenMo 2019][].
