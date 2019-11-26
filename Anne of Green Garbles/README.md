@@ -1,5 +1,5 @@
-Anne of Green Garbles
-=====================
+~Anne of Green Garbles~
+=======================
 
 Herein can be found the above-named generated novel, along with the
 code for generating it, the both of which were produced for [NaNoGenMo 2019][].
@@ -131,14 +131,14 @@ An intermediate format.
 A JSON file containing a map tagged tokens to maps of
 tagged tokens to frequencies.
 
-More Notes
-----------
+Other Features of the Generator
+-------------------------------
 
-The generator here supports some capabilities that in the end
+The generator here has some capabilities that, in the end,
 were not used in the generation of _Anne of Green Garbles_.
 
 The `build.py` script supports being given multiple input
-files (HTML documents), and builds the Markov chain model
+files (HTML documents), and builds a Markov chain model
 as if this were a single long input text.
 
 The `xform-tag-with-prev-tokens.py` filter implements an
@@ -173,7 +173,53 @@ of which do employ parenthetical phrases.
 > understand?” he declared. “It was not until I realized that he
 > hoped to lure us.”
 
+Related Work
+------------
+
+Shortly after I started working on this I was reminded of a similar
+project from a previous NaNoGenMo, and hunted for it.  I wanted to
+find it, if only to satisfy myself that this wasn't just repeating
+an existing technique.  In a short time I did find it; it was
+[The Quantum Supposition of Oz][] by [@spc476](https://github.com/spc476),
+for [NaNoGenMo 2014][].  It is definitely similar in one respect:
+it treats punctuation and words in the input text as separate tokens
+in the Markov model.
+
+In that thread, I also talk about a tool for cleaning up punctuation.
+That tool eventually became [T-Rext][].  There was a certain (large)
+amount of punctuation cleanup in this project, as well; however, the
+cleanup here comes before creating the model, whereas T-Rext was
+intended to be run over basically-arbitrary text after it has already
+been generated.
+
+That year I was doing a lot of extracting source texts from
+[Project Gutenberg][]; I started out using a tool called `gutenizer`
+for this purpose but, unsatisfied with it, I wrote my own tool called
+[Guten-gutter][].  Since writing it, however, I've come to the
+conclusion that it takes the wrong approach.  Guten-gutter extracts
+text from plain text files provided by PG, but plain text files
+obscure the structure of the text.  In this project I instead used
+Beautiful Soup to extract text from PG's HTML files, which capture
+more structure.  In particular, a paragraph of text is almost always
+an HTML `<p>` element, which is much simpler than keeping track of
+interstitial blank lines.
+
+Lastly I should also mention the pipeline.  As I was building this,
+the structure that fell out was to have a set of small programs,
+each with a specific dedicated task, usually to transform an
+intermediate format to another intermediate format.  In the world
+of programming language technology, this architecture
+is sometimes called a "micropass compiler" (see, for example,
+[this paper by Sarkar, Waddell, and Dybvig](https://www.cs.indiana.edu/~dyb/pubs/nano-jfp.pdf))
+and coincides with another previous project, [Lexeduct][],
+in which text-processing is organized along basically the same
+lines.  The pipeline architecture used here could well become the
+next major version of Lexeduct, if fortune dictates that my
+interests swing back in that direction in the future.
+
 [NaNoGenMo 2019]: https://github.com/NaNoGenMo/2019/
+[NaNoGenMo 2014]: https://github.com/dariusk/NaNoGenMo-2014
+[Project Gutenberg]: https://www.gutenberg.org/
 [Beautiful Soup]: https://www.crummy.com/software/BeautifulSoup/
 [Markov chain]: https://en.wikipedia.org/wiki/Markov_chain
 [Markov property]: https://en.wikipedia.org/wiki/Markov_property
@@ -182,3 +228,7 @@ of which do employ parenthetical phrases.
 [probabilistic finite automata]: https://en.wikipedia.org/wiki/Probabilistic_automaton
 [product construction]: https://en.wikipedia.org/wiki/File:Intersection1.png
 [Jess]: https://whitney.org/collection/works/9517
+[The Quantum Supposition of Oz]: https://github.com/dariusk/NaNoGenMo-2014/issues/137
+[T-Rext]: https://github.com/catseye/T-Rext
+[Guten-gutter]: https://github.com/catseye/Guten-gutter
+[Lexeduct]: https://github.com/catseye/Lexeduct
