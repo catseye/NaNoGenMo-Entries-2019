@@ -14,9 +14,9 @@ for [NaNoGenMo 2019][].
 
 ### Anne of Green Garbles
 
-[Novel](Anne%20of%20Green%20Garbles/generated/Anne%20of%20Green%20Garbles.md)  
-[Code](Anne%20of%20Green%20Garbles/)  
-[Documentation](Anne%20of%20Green%20Garbles/README.md)
+» The generated [Novel](Anne%20of%20Green%20Garbles/generated/Anne%20of%20Green%20Garbles.md)  
+» The [Code](Anne%20of%20Green%20Garbles/) that generated it  
+» The [Write-Up](Anne%20of%20Green%20Garbles/README.md) about the generator
 
 [Cat's Eye Technologies]: http://catseye.tc/
 [NaNoGenMo 2019]: https://github.com/NaNoGenMo/2019/
