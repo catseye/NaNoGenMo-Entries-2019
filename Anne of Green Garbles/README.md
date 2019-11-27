@@ -37,15 +37,24 @@ automaton that represents a language which is the intersection of the two
 original languages.
 
 As a concrete example, if the Markov chain is obtained from analyzing
-_Anne of Green Gables_, and the regular grammar is one which describes
-some basic rules of punctuation in English writing, as shown below
-(in the form of the corresponding [finite automaton][]):
+Lucy Maud Montgomery's _Anne of Green Gables_, and the regular grammar is one
+which describes some basic rules of punctuation in English writing, as shown
+below (in the form of the corresponding [finite automaton][]):
 
 ![Abbreviated diagram of punctuation automaton](images/narration-dialogue-parenthetical.png?raw=true)
 
 ...then the resulting automaton is a Markov chain based on the word
 frequencies in _Anne of Green Gables_ but restricted to producing
-only those strings which correctly follow the given rules of punctuation.
+only those strings which correctly follow the given rules of punctuation,
+generating text from it produces paragraphs like
+
+> “Well now that was overcome it much, of it was redder,” said Miss Barry kept
+> the rake and starry eyes at the lane, the dismissal of being a middle of June
+> evening at once in from being something to nobody either question. “I was born
+> to the rest and good girl.” said. Once, with a boy at him on Anne’s
+> eager-looking, hunting out into the way—their brown beard which, one of the
+> tears and then to studying it, “Yes,” protested Anne walked home through the
+> self-haired Shirley at least. “This is the worst.”
 
 We might call the automaton resulting from this construction a
 "tagged Markov chain", because each token is tagged with the state of
@@ -53,13 +62,13 @@ the regular grammar in which it was encountered.  The construction is
 compatible with higher-order Markov chains; the tokens which precede a
 token can be thought of as additional tags on that token.  Conversely,
 the state of the regular grammar could be thought of as a kind of
-abstract, "long-distance" higher-order Markov chain.
+abstract, "long-distance" higher-order factor in the Markov chain.
 
 Just like when a conventional higher-order Markov chain is constructed,
 the result of this construction is itself a Markov chain; it retains
 the [Markov property][].  This would not be the case if the grammar we
 wished to combine with the Markov chain was not a regular grammar
-(e.g. if it was a context-free grammar), as we would need to "remember"
+(e.g. if it was a context-free grammar), as then we would need to "remember"
 how many levels of nesting we had entered previously.
 
 Implementation
@@ -74,7 +83,7 @@ corpus or human-readable source, such as a web page downloaded from
 Project Gutenberg, and output it in an intermediate format.
 
 Scripts whose names start with `xform` are transformer filters
-which take a file in (usually on `stdin`) and produce another
+which read in a file (usually on `stdin`) and produce another
 file (usually on `stdout`); these file are both in intermediate
 formats, usually the same intermediate format.
 
@@ -120,15 +129,16 @@ Some meaningful tags are: `state`, the state of the automaton
 representing the regular grammar; and `prev1`, the previous
 token, for constructing an order-2 Markov chain.
 
-The set of tags in a tagged tokenstream is generally
-homongenous: every token in the stream has the same set of tags,
-only potentially with different values for each tag.
+If every token in the stream has the same set of tags,
+only potentially with different values for each tag, we
+call it a homogenous tagged tokenstream.  The tagged
+tokenstreams used in this generator are homogenous.
 
 ### Model JSON
 
 An intermediate format.
 
-A JSON file containing a map tagged tokens to maps of
+A JSON file containing a map from tagged tokens to maps from
 tagged tokens to frequencies.
 
 Other Features of the Generator
@@ -179,7 +189,7 @@ Related Work
 I should say that I have no real idea if this is a standard technique
 in statistics or what.  All I know is that I'd been idly wondering, on
 and off, about how one might "teach a Markov chain a bit of grammar",
-since probably 2014 or 2015; that I've never, to my knowledge, seen
+since probably 2015; that I've never, to my knowledge, seen
 this method applied in the area of generative text or elsewhere; and
 that, when I decided to actually sit down and try it for
 [NaNoGenMo 2019][], it wasn't immediately obvious to me that the
@@ -195,9 +205,11 @@ an existing technique.  In a short time I did find it; it was
 [The Quantum Supposition of Oz][] by [@spc476](https://github.com/spc476),
 for [NaNoGenMo 2014][].  It is definitely similar in one respect:
 it treats punctuation and words in the input text as separate tokens
-in the Markov model.
+in the Markov model.  This is something that definitely makes sense to
+do when some of those tokens (punctuation) trigger state changes in a
+state machine.
 
-In that thread, I also talk about a tool for cleaning up punctuation.
+In the issue for QSoO, I also mention a tool for cleaning up punctuation.
 That tool eventually became [T-Rext][].  There was a certain (large)
 amount of punctuation cleanup in this project, as well; however, the
 cleanup here comes before creating the model, whereas T-Rext was
@@ -214,7 +226,9 @@ obscure the structure of the text.  In this project I instead used
 Beautiful Soup to extract text from PG's HTML files, which capture
 more structure.  In particular, a paragraph of text is almost always
 an HTML `<p>` element, which is much simpler than keeping track of
-interstitial blank lines.
+interstitial blank lines.  This also makes it more versatile, as it
+can be used to extract text from other HTML-based sources such as
+[WikiSource][].
 
 I should also say a few words about the architecture.  As I was building
 this, the structure that fell out was to have a set of small programs,
@@ -281,6 +295,7 @@ better, but in my estimation, outside the scope of NaNoGenMo 2019.
 [NaNoGenMo 2019]: https://github.com/NaNoGenMo/2019/
 [NaNoGenMo 2014]: https://github.com/dariusk/NaNoGenMo-2014
 [Project Gutenberg]: https://www.gutenberg.org/
+[WikiSource]: https://wikisource.org/
 [Beautiful Soup]: https://www.crummy.com/software/BeautifulSoup/
 [Markov chain]: https://en.wikipedia.org/wiki/Markov_chain
 [Markov property]: https://en.wikipedia.org/wiki/Markov_property
