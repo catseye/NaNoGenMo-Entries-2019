@@ -17,7 +17,7 @@ for [NaNoGenMo 2019][].
 » The generated [Novel](Anne%20of%20Green%20Garbles/generated/Anne%20of%20Green%20Garbles.md)  
 » The [Code](Anne%20of%20Green%20Garbles/) that generated it  
 » The [Write-Up](Anne%20of%20Green%20Garbles/README.md) about the generator  
-» The [Issue](https://github.com/NaNoGenMo/2019/issues/118) submitting it to NaNoGenMo 2019
+» The [Issue (#118)](https://github.com/NaNoGenMo/2019/issues/118) submitting it to NaNoGenMo 2019
 
 ### The Insidiously Rainbow-Wigged Dr. Fu-Manchu
 
