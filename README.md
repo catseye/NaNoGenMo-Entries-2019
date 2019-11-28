@@ -24,5 +24,10 @@ for [NaNoGenMo 2019][].
 » The generated [Novel](The%20Insidiously%20Rainbow-Wigged%20Dr.%20Fu-Manchu/generated/The%20Insidiously%20Rainbow-Wigged%20Dr.%20Fu-Manchu.md)  
 » The [Code](The%20Insidiously%20Rainbow-Wigged%20Dr.%20Fu-Manchu/) that generated it
 
+### The Epic of Goog-a-MESH
+
+» The generated [Novel](The%20Epic%20of%20Goog-a-MESH/generated/The%20Epic%20of%20Goog-a-MESH.md)  
+» The [Code](The%20Epic%20of%20Goog-a-MESH/) that generated it
+
 [Cat's Eye Technologies]: http://catseye.tc/
 [NaNoGenMo 2019]: https://github.com/NaNoGenMo/2019/
