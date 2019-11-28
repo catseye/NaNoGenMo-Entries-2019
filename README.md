@@ -26,6 +26,8 @@ for [NaNoGenMo 2019][].
 
 ### The Epic of Goog-a-MESH
 
+#### Art in the Age of Quantum Supremacy Meets Proof in the Age of Oral Tradition
+
 » The generated [Novel](The%20Epic%20of%20Goog-a-MESH/generated/The%20Epic%20of%20Goog-a-MESH.md)  
 » The [Code](The%20Epic%20of%20Goog-a-MESH/) that generated it
 
