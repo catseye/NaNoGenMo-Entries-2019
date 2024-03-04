@@ -1,11 +1,12 @@
 Cat's Eye Technologies' Entries for NaNoGenMo 2019
 ==================================================
 
-_See also:_ [The Swallows](https://github.com/catseye/The-Swallows#readme) (2013)
-∘ [NaNoGenLab](https://github.com/catseye/NaNoGenLab#readme) (2014)
-∘ [MARYSUE](https://github.com/catseye/MARYSUE#readme) (2015)
-∘ [2017 Entries](https://github.com/catseye/NaNoGenMo-Entries-2017#readme)
-∘ [2018 Entries](https://github.com/catseye/NaNoGenMo-Entries-2018#readme)
+_See also:_ [The Swallows](https://git.catseye.tc/The-Swallows/) (2013)
+∘ [NaNoGenLab](https://git.catseye.tc/NaNoGenLab/) (2014)
+∘ [MARYSUE](https://git.catseye.tc/MARYSUE/) (2015)
+∘ [2017 Entries](https://git.catseye.tc/NaNoGenMo-Entries-2017/)
+∘ [2018 Entries](https://git.catseye.tc/NaNoGenMo-Entries-2018/)
+∘ [Dissociated Parse](https://git.catseye.tc/Dissociated-Parse/) (2021)
 
 - - - -
 
